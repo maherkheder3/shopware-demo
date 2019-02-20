@@ -4,12 +4,12 @@
 
     <elements>
         <element type="text">
-            <name>demoConfig</name>
-            <label lang="de">Demo Konfiguration</label>
-            <label lang="en">Demo configuration</label>
-            <value>Just a demo configuration, without any effects.</value>
-            <description lang="de">Nur ein hoffentlich hilfreicher Text.</description>
-            <description lang="en">Hopefully this text will help you.</description>
+            <name>blockedProperties</name>
+            <label lang="de">blockedProperties</label>
+            <label lang="en">blockedProperties</label>
+            <value>test1;test2;test3</value>
+            <description lang="de">schreiben Sie (;) zwischen die blocked properties Name.</description>
+            <description lang="en">Plases write (;) bettwen the blocked properties  name.</description>
         </element>
     </elements>
 

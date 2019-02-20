@@ -104,7 +104,7 @@
                 <h2>Bestellfax (0511) 37 07 86 93<br/>www.n-medica.de</h2>
                 <!-- <p>{$sHeute}</p> -->
             </td>
-            <td width="40%" align="right"><img src="{$SabPDFToolConfig->pdf_logo}" style="width: 91px; height: auto;"></td>
+            <td width="40%" align="right"><img src="{$SabPDFToolConfig->pdf_logo}" style="wwidth: 91px; height: auto;"></td>
         </tr>
     </table>
 </htmlpageheader>
