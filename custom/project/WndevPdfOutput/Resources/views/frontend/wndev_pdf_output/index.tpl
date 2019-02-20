@@ -85,6 +85,7 @@
                 {foreach $sArticle.sProperties as $property}
                     <tr>
                         <td>{$property.name}</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>{$property.groupName}</td>

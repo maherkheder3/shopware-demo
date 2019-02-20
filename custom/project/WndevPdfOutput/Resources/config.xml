@@ -4,13 +4,65 @@
 
     <elements>
         <element type="text">
-            <name>blockedProperties</name>
+            <name>blocked Properties</name>
             <label lang="de">blockedProperties</label>
             <label lang="en">blockedProperties</label>
             <value>test1;test2;test3</value>
             <description lang="de">schreiben Sie (;) zwischen die blocked properties Name.</description>
             <description lang="en">Plases write (;) bettwen the blocked properties  name.</description>
         </element>
+
+        <element type="text">
+            <name>pageMargin</name>
+            <label lang="de">Page Margin</label>
+            <label lang="en">Page Margin</label>
+            <value>35;15;25;15</value>
+            <description lang="de">Form: top;right;bottom;left</description>
+            <description lang="en">Form: top;right;bottom;left</description>
+        </element>
+
+        <element type="text">
+            <name>marginHeader</name>
+            <label lang="de">Margin Header</label>
+            <label lang="en">marginHeader</label>
+            <value>0</value>
+        </element>
+
+        <element type="text">
+            <name>marginFooter</name>
+            <label lang="de">Margin Footer</label>
+            <label lang="en">Margin Footer</label>
+            <value>0</value>
+        </element>
+
+        <element type="text">
+            <name>orientation</name>
+            <label lang="de">Orientation</label>
+            <label lang="en">Orientation</label>
+            <value>P</value>
+        </element>
+
+        <element type="text">
+            <name>default_font</name>
+            <label lang="de">Default Font</label>
+            <label lang="en">Default Font</label>
+            <value>verdana</value>
+        </element>
+
+        <element type="text">
+            <name>default_font_size</name>
+            <label lang="de">Default Font Size</label>
+            <label lang="en">Default Font Size</label>
+            <value>0</value>
+        </element>
+
+        <element type="text">
+            <name>pageFormat</name>
+            <label lang="de">Page Format</label>
+            <label lang="en">Page Format</label>
+            <value>A4</value>
+        </element>
     </elements>
 
 </config>
+

@@ -35,18 +35,20 @@ class Shopware_Controllers_Frontend_WndevPdfOutput extends Enlight_Controller_Ac
 
             $data = $this->View()->fetch(dirname(__FILE__) . '/../../Resources/views/frontend/wndev_pdf_output/index.tpl');
 
+            $pageMargin = explode(';', $config['pageMargin']);
+
             $pdfConfig = [
                 'mode' => 'c',
-                'format' => 'A4',
-                'default_font_size' => 0,
-                'default_font' => 'verdana',
-                'margin_left' => 15,
-                'margin_right' => 15,
-                'margin_top' => 35,
-                'margin_bottom' => 25,
-                'margin_header' => 0,
-                'margin_footer' => 0,
-                'orientation' => 'P',
+                'format' => $config['format'],
+                'default_font_size' => $config['default_font_size'],
+                'default_font' => $config['verdana'],
+                'margin_top' => $pageMargin[0],
+                'margin_right' => $pageMargin[1],
+                'margin_bottom' => $pageMargin[2],
+                'margin_left' => $pageMargin[3],
+                'margin_header' => $config['marginHeader'],
+                'margin_footer' => $config['marginFooter'],
+                'orientation' => $config['orientation'],
                 'debug' => true,
                 'allow_output_buffering' => true
             ];
