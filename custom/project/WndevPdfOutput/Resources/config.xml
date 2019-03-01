@@ -22,6 +22,13 @@
         </element>
 
         <element type="text">
+            <name>logoCSS</name>
+            <label lang="de">Logo CSS</label>
+            <label lang="en">Logo CSS</label>
+            <value>margin: 10px 40px 40px</value>
+        </element>
+
+        <element type="text">
             <name>pageMargin</name>
             <label lang="de">Page Margin</label>
             <label lang="en">Page Margin</label>

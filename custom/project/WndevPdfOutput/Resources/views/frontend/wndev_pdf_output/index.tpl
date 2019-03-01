@@ -21,6 +21,20 @@
         padding-left: 15px;
     }
 
+    .border-bottom{
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 20px;
+    }
+
+    table tr:nth-child(even){
+        background-color: #f1f1f1;
+        border-bottom: 1px solid #ddd;
+    }
+    td{
+        padding: 2px 5px;
+        margin-bottom: 3px;
+    }
+
 </style>
 <body>
 
@@ -28,7 +42,7 @@
     <table width="700px" class="table_pageheader" style="border-bottom:1px solid #000;">
         <tr>
             <td width="40%" align="right">
-                <img style="margin: 10px 40px 40px"
+                <img style="{$logoCSS}"
                      src="{$shopLogo}" alt="" >
             </td>
         </tr>
@@ -42,34 +56,36 @@
 <sethtmlpagefooter name="myHTMLFooter" page="0" value="on" />
 <div id="content">
 
-    <h1>{$sArticle.articleName}</h1>
-    {if $sArticle.description}
-        <p>{$sArticle.description}</p>
-    {/if}
+    <div>
+        <h1>{$sArticle.articleName}</h1>
+        {if $sArticle.description}
+            <p>{$sArticle.description}</p>
+        {/if}
 
-    <table cellspacing="0" class="artikel-number-box">
-        <tr>
-            <td>Artikelnummer:</td>
-            <td>{$sArticle.ordernumber}</td>
-        </tr>
-        <tr>
-            <td>Listenpreis:</td>
-            <td>{$sArticle.price|currency}</td>
-        </tr>
-        <tr>
-            <td>Lieferung:</td>
-            <td>
-                {if $sArticle.shippingtime}
-                    {$sArticle.shippingtime} weekdays
-                {elseif $sBasketItem.shippingtime}
-                    {$sBasketItem.shippingtime} weekdays
-                {else}Ready for immediate shipment, delivery time approx. 1-3 workdays
-                {/if}
-            </td>
-        </tr>
-    </table>
+        <table cellspacing="0" class="artikel-number-box">
+            <tr>
+                <td>Artikelnummer:</td>
+                <td>{$sArticle.ordernumber}</td>
+            </tr>
+            <tr>
+                <td>Listenpreis:</td>
+                <td>{$sArticle.price|currency}</td>
+            </tr>
+            <tr>
+                <td>Lieferung:</td>
+                <td>
+                    {if $sArticle.shippingtime}
+                        {$sArticle.shippingtime} weekdays
+                    {elseif $sBasketItem.shippingtime}
+                        {$sBasketItem.shippingtime} weekdays
+                    {else}Ready for immediate shipment, delivery time approx. 1-3 workdays
+                    {/if}
+                </td>
+            </tr>
+        </table>
+    </div>
 
-    <div class="product">
+    <div class="product border-bottom">
         <div class="product-image">
             <table>
                 <tr>
@@ -94,14 +110,16 @@
     </div>
     <div style="clear: left;"></div>
 
-    <div class="description_long">
+    <div class="description_long border-bottom">
         {if $sArticle.description_long}
             <h3>Description</h3>
             <p>{$sArticle.description_long}</p>
         {/if}
     </div>
 
-    <div class="properties">
+    <pagebreak />
+
+    <div class="properties border-bottom">
         <h3>Eigenschaften</h3>
         <table style="width: 100%">
             <thead>
@@ -123,12 +141,14 @@
 
     <div class="attributes">
         {if $sAttrs}
-            <h3>Article Properties</h3>
-            <ul>
-                {foreach $sAttrs as $attr}
-                    <li>{$attr}</li>
-                {/foreach}
-            </ul>
+            <div class="border-bottom">
+                <h3>Article Properties</h3>
+                <ul>
+                    {foreach $sAttrs as $attr}
+                        <li>{$attr}</li>
+                    {/foreach}
+                </ul>
+            </div>
         {/if}
     </div>
 

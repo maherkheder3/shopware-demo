@@ -52,6 +52,7 @@ class Shopware_Controllers_Frontend_WndevPdfOutput extends Enlight_Controller_Ac
             }
             $this->View()->assign('sAttrs', $newAttr);
             $this->View()->assign('shopLogo', $config['logo']);
+            $this->View()->assign('logoCSS', $config['logoCSS']);
 
 
             // pdf configuration
