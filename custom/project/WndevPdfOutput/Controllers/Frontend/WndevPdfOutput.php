@@ -7,11 +7,19 @@ use Dompdf\Dompdf;
  */
 class Shopware_Controllers_Frontend_WndevPdfOutput extends Enlight_Controller_Action
 {
+    public function __construct(
+        \Enlight_Controller_Request_Request $request,
+        \Enlight_Controller_Response_Response $response
+    ) {
+        parent::__construct($request, $response);
+        $this->view->extendsTemplate('frontend/documents/detail.tpl');
+    }
+
     public function indexAction()
     {
         $this->Response()->setHeader('Content-type', 'application/pdf', true); // application/pdf
         $id = $this->request->get('id');
-        $modules = $this->container->get('modules');
+        $modules = $this->get('modules');
 
         try {
             $sArticle = $modules->Articles()->sGetArticleById($id);
@@ -22,21 +30,33 @@ class Shopware_Controllers_Frontend_WndevPdfOutput extends Enlight_Controller_Ac
 
             $config = $this->getPluginConfig();
 
+            // get blocked properties from configuration the plugin
             $blockedProperties = $config['blockedProperties'];
             $blockedProperties = explode(';', $blockedProperties);
 
+            // clear all blocked properties from sArticle
             foreach ($sArticle['sProperties'] as $key => $sProperty) {
                 if (in_array($sProperty['name'], $blockedProperties)) {
                     unset($sArticle['sProperties'][$key]);
                 }
             }
-
             $this->View()->assign('sArticle', $sArticle);
 
+            // save just the unblock properties in newAttr
+            $newAttr = [];
+            for ($i = 1; $i <= 20; $i++ ) {
+                if($sArticle['attr' . $i] && $sArticle['attr' . $i] !== null &&
+                    in_array('attr' . $i, $blockedProperties) === false){
+                    $newAttr[] = $sArticle['attr' . $i];
+                }
+            }
+            $this->View()->assign('sAttrs', $newAttr);
+            $this->View()->assign('shopLogo', $config['logo']);
+
+
+            // pdf configuration
             $data = $this->View()->fetch(dirname(__FILE__) . '/../../Resources/views/frontend/wndev_pdf_output/index.tpl');
-
             $pageMargin = explode(';', $config['pageMargin']);
-
             $pdfConfig = [
                 'mode' => 'c',
                 'format' => $config['format'],
@@ -52,7 +72,6 @@ class Shopware_Controllers_Frontend_WndevPdfOutput extends Enlight_Controller_Ac
                 'debug' => true,
                 'allow_output_buffering' => true
             ];
-
             $mpdf                   = new Mpdf\Mpdf($pdfConfig);
             $mpdf->allow_charset_conversion = true;  // Set by default to TRUE
             $mpdf->charset_in       = 'utf-8';
@@ -62,10 +81,9 @@ class Shopware_Controllers_Frontend_WndevPdfOutput extends Enlight_Controller_Ac
 
             $mpdf->WriteHTML($data);
 
-
             $mpdf->Output('Produktinformation.pdf', 'I');
 
-            // prevent shopware from template rendering
+            // prevent shopware from template rendering ( important )
             exit;
 
         } catch (\Exception $exception) {

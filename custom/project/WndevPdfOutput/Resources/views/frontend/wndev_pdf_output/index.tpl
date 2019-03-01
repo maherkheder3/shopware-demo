@@ -9,8 +9,16 @@
         width: 65%;
         display: inline-block;
     }
-    .properties{
-        padding-top: 40px;
+    h3{
+       margin-bottom: 15px;
+    }
+
+    table{
+        margin-bottom: 40px;
+    }
+
+    .artikel-number-box tr td:nth-child(2){
+        padding-left: 15px;
     }
 
 </style>
@@ -21,13 +29,13 @@
         <tr>
             <td width="40%" align="right">
                 <img style="margin: 10px 40px 40px"
-                     src="http://shopware.l/themes/Frontend/Responsive/frontend/_public/src/img/logos/logo--mobile.png" alt="" >
+                     src="{$shopLogo}" alt="" >
             </td>
         </tr>
     </table>
 </htmlpageheader>
 <htmlpagefooter name="myHTMLFooter">
-    <h2>test</h2>
+
 </htmlpagefooter>
 
 <sethtmlpageheader name="myHTMLHeader1" page="O" value="on" show-this-page="1" />
@@ -35,16 +43,29 @@
 <div id="content">
 
     <h1>{$sArticle.articleName}</h1>
-    <p>{$sArticle.description}</p>
+    {if $sArticle.description}
+        <p>{$sArticle.description}</p>
+    {/if}
 
-    <table cellspacing="0">
+    <table cellspacing="0" class="artikel-number-box">
         <tr>
-            <td>Artikelnummer : </td>
+            <td>Artikelnummer:</td>
             <td>{$sArticle.ordernumber}</td>
         </tr>
         <tr>
-            <td>Listenpreis : </td>
+            <td>Listenpreis:</td>
             <td>{$sArticle.price|currency}</td>
+        </tr>
+        <tr>
+            <td>Lieferung:</td>
+            <td>
+                {if $sArticle.shippingtime}
+                    {$sArticle.shippingtime} weekdays
+                {elseif $sBasketItem.shippingtime}
+                    {$sBasketItem.shippingtime} weekdays
+                {else}Ready for immediate shipment, delivery time approx. 1-3 workdays
+                {/if}
+            </td>
         </tr>
     </table>
 
@@ -73,28 +94,44 @@
     </div>
     <div style="clear: left;"></div>
 
+    <div class="description_long">
+        {if $sArticle.description_long}
+            <h3>Description</h3>
+            <p>{$sArticle.description_long}</p>
+        {/if}
+    </div>
+
     <div class="properties">
-        <table>
+        <h3>Eigenschaften</h3>
+        <table style="width: 100%">
             <thead>
                 <tr>
-                    <th>Eigenschaft</th>
-                    <th>Wert</th>
+                    <th width="35%" style="text-align: left">Eigenschaft</th>
+                    <th width="65%" style="text-align: left">Wert</th>
                 </tr>
             </thead>
             <tbody>
                 {foreach $sArticle.sProperties as $property}
                     <tr>
                         <td>{$property.name}</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>{$property.groupName}</td>
                         <td>{$property.value}</td>
                     </tr>
                 {/foreach}
             </tbody>
         </table>
     </div>
+
+    <div class="attributes">
+        {if $sAttrs}
+            <h3>Article Properties</h3>
+            <ul>
+                {foreach $sAttrs as $attr}
+                    <li>{$attr}</li>
+                {/foreach}
+            </ul>
+        {/if}
+    </div>
+
 </div>
 </body>
 

@@ -4,12 +4,21 @@
 
     <elements>
         <element type="text">
-            <name>blocked Properties</name>
-            <label lang="de">blockedProperties</label>
-            <label lang="en">blockedProperties</label>
+            <name>blockedProperties</name>
+            <label lang="de">blocked Properties</label>
+            <label lang="en">blocked Properties</label>
             <value>test1;test2;test3</value>
             <description lang="de">schreiben Sie (;) zwischen die blocked properties Name.</description>
             <description lang="en">Plases write (;) bettwen the blocked properties  name.</description>
+        </element>
+
+        <element type="text">
+            <name>logo</name>
+            <label lang="de">Logo url</label>
+            <label lang="en">Logo url</label>
+            <value>http://shopware.l/themes/Frontend/Responsive/frontend/_public/src/img/logos/logo--mobile.png</value>
+            <description lang="de">https://example.com/logo.png</description>
+            <description lang="en">https://example.com/logo.png</description>
         </element>
 
         <element type="text">
@@ -23,15 +32,15 @@
 
         <element type="text">
             <name>marginHeader</name>
-            <label lang="de">Margin Header</label>
-            <label lang="en">marginHeader</label>
+            <label lang="de">Margin Page Header</label>
+            <label lang="en">margin Page Header</label>
             <value>0</value>
         </element>
 
         <element type="text">
             <name>marginFooter</name>
-            <label lang="de">Margin Footer</label>
-            <label lang="en">Margin Footer</label>
+            <label lang="de">Margin Page Footer</label>
+            <label lang="en">Margin Page Footer</label>
             <value>0</value>
         </element>
 

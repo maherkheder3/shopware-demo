@@ -2,7 +2,6 @@
 <container xmlns="http://symfony.com/schema/dic/services"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-
     <services>
         <!-- @todo Add your services here -->
         <service id="wndev_pdf_output.subscriber.frontend" class="WndevPdfOutput\Subscriber\Frontend">
@@ -19,5 +18,10 @@
             <tag name="shopware.event_subscriber" />
         </service>
 
+        <service class="Shopware_Controllers_Frontend_WndevPdfOutput" id="shopware_controllers_frontend_wndev_pdf_output">
+            <call method="setFront">
+                <argument id="front" type="service"/>
+            </call>
+        </service>
     </services>
 </container>
