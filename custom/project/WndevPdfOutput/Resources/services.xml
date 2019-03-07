@@ -5,6 +5,7 @@
     <services>
         <!-- @todo Add your services here -->
         <service id="wndev_pdf_output.subscriber.frontend" class="WndevPdfOutput\Subscriber\Frontend">
+            <argument>%wndev_pdf_output.plugin_dir%</argument>
             <tag name="shopware.event_subscriber" />
         </service>
 

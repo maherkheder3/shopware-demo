@@ -6,17 +6,32 @@ use Enlight\Event\SubscriberInterface;
 
 class Frontend implements SubscriberInterface
 {
-    public static function getSubscribedEvents()
+    /** @var string */
+    private $pluginDir;
+
+    /**
+     * Frontend constructor.
+     *
+     * @param $pluginDir
+     */
+    public function __construct($pluginDir)
     {
-        return array(
-            'Enlight_Controller_Action_PostDispatchSecure_Frontend' => 'onFrontendPostDispatch'
-        );
+        $this->pluginDir = $pluginDir;
     }
 
-    public function onFrontendPostDispatch(\Enlight_Event_EventArgs $args)
+    public static function getSubscribedEvents()
     {
-        /** @var $controller \Enlight_Controller_Action */
-        $controller = $args->getSubject();
-        $view = $controller->View();
+        return [
+            'Enlight_Controller_Action_PreDispatch_Frontend_Detail' => 'onPreDispatchFrontendDetail'
+        ];
+    }
+
+    public function onPreDispatchFrontendDetail(\Enlight_Event_EventArgs $args)
+    {
+        /** @var \Shopware_Controllers_Frontend_Detail $subject */
+        $subject = $args->getSubject();
+        $view = $subject->View();
+
+        $view->addTemplateDir($this->pluginDir.'/Resources/views/');
     }
 }

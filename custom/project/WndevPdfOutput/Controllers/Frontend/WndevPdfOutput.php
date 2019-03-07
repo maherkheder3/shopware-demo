@@ -7,6 +7,8 @@ use Dompdf\Dompdf;
  */
 class Shopware_Controllers_Frontend_WndevPdfOutput extends Enlight_Controller_Action
 {
+    /** @var \Shopware_Components_Modules */
+    private $modules;
     public function __construct(
         \Enlight_Controller_Request_Request $request,
         \Enlight_Controller_Response_Response $response
@@ -15,14 +17,18 @@ class Shopware_Controllers_Frontend_WndevPdfOutput extends Enlight_Controller_Ac
         $this->view->extendsTemplate('frontend/documents/detail.tpl');
     }
 
+    public function preDispatch()
+    {
+        $this->modules = $this->get('modules');
+    }
+
     public function indexAction()
     {
         $this->Response()->setHeader('Content-type', 'application/pdf', true); // application/pdf
-        $id = $this->request->get('id');
-        $modules = $this->get('modules');
+        $id = $this->request->get('articleId');
 
         try {
-            $sArticle = $modules->Articles()->sGetArticleById($id);
+            $sArticle = $this->modules->Articles()->sGetArticleById($id);
 
             if (!$sArticle) {
                 throw new \InvalidArgumentException(sprintf('article "%s" not found', $id));
