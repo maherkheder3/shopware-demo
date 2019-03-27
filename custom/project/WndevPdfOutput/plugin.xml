@@ -8,7 +8,30 @@
     <license>proprietary</license>
     <link>http://store.shopware.com</link>
     <author>Shopware AG</author>
-
+    <description><![CDATA[<!-- Generated from Readme.md at 2019-03-27T11:25:04+01:00 by WndevDeveloper -->
+<style>
+.documentation h1 { font-size: 1.8em; }
+.documentation h2 { font-size: 1.5em; }
+.documentation h3 { font-size: 1.2em; }
+.documentation h2,.documentation h3,.documentation h4 { margin-top: 1em; margin-bottom: 0.5em; }
+.documentation p, .documentation ul, .documentation pre, .documentation li { margin-bottom: 0.5em; }
+.documentation a { color: #0e6bbb; }
+.documentation pre, .documentation code { background: #ddd; padding: 0 0.25em; }
+.documentation pre { overflow: auto; }
+.documentation strong { font-weight: bold; }
+</style>
+<div class="documentation"><h2>Wndev Pdf Output</h2>
+<p>Add new button in Article Page to convert the page to custom PDF File</p>
+<h2>Configurations</h2>
+<ul>
+<li>Please insert the Shop Logo url in Logo url field.</li>
+<li>In blocked Properties field insert the properties names and use ( ; ) to insert multi properties.</li>
+<li>Logo css must in css syntax.</li>
+<li>Another fields are not compulsory and you can use the default values.</li>
+</ul>
+<h2>Autor / Lizenz</h2>
+<p>Copyright © 2019, <a href="https://www.web-netz.de/">web-netz GmbH</a>
+Proprietäre Lizenz</p></div>]]></description>
     <compatibility minVersion="5.2.0" />
 
     <changelog version="1.0.0">

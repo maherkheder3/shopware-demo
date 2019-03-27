@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/5.3/engine/Shopware/Components/Plugin/schema/plugin.xsd">
+    <label>web-netz Development Tools</label>
+
+    <version>1.0.8</version>
+    <copyright>Copyright © 2018, web-netz GmbH</copyright>
+    <license>Proprietary</license>
+    <link>https://web-netz.de</link>
+    <author>web-netz GmbH</author>
+    <description><![CDATA[<!-- Generated from Readme.md at 2018-11-22T10:10:44+01:00 by WndevDeveloper -->
+<style>
+.tab-item-content h2,.tab-item-content h3,.tab-item-content h4 { margin-top: 1em; }
+.tab-item-content p { margin-bottom: 0.5em; }
+</style>
+<h1>Developer</h1>
+<p>Eine Sammlung von Tools für Entwicklung &amp; Deployments. U.a. kann zwischen verschiedenen Instanzen der Zustand der Plugins synchron gehalten werden.</p>
+<h2>Benutzung</h2>
+<p>Das Plugin beinhaltet folgende Funktionssets:</p>
+<ul>
+<li>LESS-Variablen: Kopiert LESS-Variablen zwischen Datei, Datenbank und PHP-Klasse hin und her.</li>
+<li>Pluginlist: Synchronisiert über Instanzen hinweg den Zustand von Plugins.</li>
+</ul>
+<h3>Pluginlist</h3>
+<p>Mit den <code>wndev:pluginlist</code>-Konsolenkommandos kann der Zustand der Plugins im Repo hinterlegt werden. Damit können alle anderen Instanzen dieses Repos den Zustand der Plugins wieder bei sich einspielen.</p>
+<p>Dazu wird eine Datei namens <code>plugins.json</code> im Wurzelverzeichnis des Projekts angelegt. In dieser Datei wird vermerkt, ob ein Plugin <em>aktiv</em> ist, der <em>Zeitpunkt der letzten Installation</em>, und der <em>Zeitpunkt der letzten Aktualisierung</em>. Darüber hinaus wird die Versionsnummer des Plugins gespeichert.</p>
+<p>Mit den folgenden Kommandos kann der Zustand zwischen Datei und Instanz abgeglichen werden:</p>
+<pre><code class="language-shell">php bin/console wndev:pluginlist:status  # Zeigt den Unterschied zwischen plugins.json und DB an
+php bin/console wndev:pluginlist:update  # Kopiert Zustand von DB nach plugins.json
+php bin/console wndev:pluginlist:install # Kopiert Zustand von plugins.json nach DB</code></pre>
+<p>Als Workflow empfiehlt es sich also, bei Änderungen in Plugins, Neuinstallation oder Deaktivierung von Plugins <code>wndev:pluginlist:update</code> auszuführen und die geänderte <code>plugins.json</code> ins Repo einzuspielen.</p>
+<p>Wenn nach einem <code>git pull</code> die <code>plugins.json</code> geändert wurde, sollte wiederum ein <code>wndev:pluginlist:install</code> durchgeführt werden, um den Zustand in der eigenen Instanz dem Zustand im Repo anzugleichen.</p>
+<p>Beispiel:</p>
+<pre><code>root@develop:/var/www/# php src/bin/console wndev:pluginlist:status
+
++---------------------------+-----------------------+---------------+------------------+
+| Plugin                    | Needs (re)installing? | Needs update? | Needs disabling? |
++---------------------------+-----------------------+---------------+------------------+
+| AdvancedMenu              | No                    | No            | No               |
+| Cron                      | No                    | No            | No               |
+| WndevDeveloper            | Yes                   | No            | No               |
+| WndevForms                | No                    | No            | No               |
+| WndevLocationWidget       | No                    | No            | No               |
+| WndevSocialShare          | No                    | No            | No               |
+| WNNoShop                  | No                    | No            | No               |
+| WNVariants                | No                    | No            | No               |
++---------------------------+-----------------------+---------------+------------------+
+1 plugins need (re)installing
+0 plugins need updating
+0 plugins need disabling
+
+root@develop:/var/www/# php src/bin/console wndev:pluginlist:install
+1 plugin(s) (re)installed
+</code></pre>
+<h2>Autor</h2>
+<p><a href="https://www.web-netz.de/">web-netz GmbH</a> 2017</p>]]></description>
+    <compatibility minVersion="5.2.0"/>
+    <changelog version="1.0.2">
+        <changes lang="de">Wechsel zu neuer Shopware Plugin-Struktur</changes>
+        <changes>Change to new Shopware plugin structure</changes>
+    </changelog>
+    <changelog version="1.0.6">
+        <changes>Add parameter to add a single plugin to `plugins.json`</changes>
+    </changelog>
+    <changelog version="1.0.7">
+        <changes>Add converter from `README.md` to `plugin.xml`</changes>
+    </changelog>
+    <changelog version="1.0.8">
+        <changes>Add `bin/console wndev:deleteur:subshop`</changes>
+    </changelog>
+</plugin>

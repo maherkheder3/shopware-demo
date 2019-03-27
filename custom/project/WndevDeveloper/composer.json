@@ -1,0 +1,25 @@
+{
+    "name": "webnetz/wnplugin-shopware-wndev-developer",
+    "version": "1.0.2",
+    "description": "Add enhanced plugin administration for CLI",
+    "keywords": ["shopware", "webnetz", "wndev"],
+    "type": "shopware-plugin",
+    "homepage": "https://www.web-netz.de",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "web-netz GmbH",
+            "homepage": "https://www.web-netz.de",
+            "email": "info@web-netz.de",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "forum": "https://www.web-netz.de",
+        "issues": "https://www.web-netz.de",
+        "source": "https://www.web-netz.de"
+    },
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="wndev_developer.commands.less_from_db" class="WndevDeveloper\Commands\LessFromDb">
+            <tag name="console.command" />
+        </service>
+        <service id="wndev_developer.commands.less_to_php" class="WndevDeveloper\Commands\LessToPhp">
+            <tag name="console.command" />
+        </service>
+        <service id="wndev_developer.commands.plugin_config_install" class="WndevDeveloper\Commands\PluginConfigInstallCommand">
+            <tag name="console.command" />
+        </service>
+        <service id="wndev_developer.commands.plugin_config_update" class="WndevDeveloper\Commands\PluginConfigUpdateCommand">
+            <tag name="console.command" />
+        </service>
+        <service id="wndev_developer.commands.pluginlist_install" class="WndevDeveloper\Commands\PluginlistInstallCommand">
+            <tag name="console.command" />
+        </service>
+        <service id="wndev_developer.commands.pluginlist_status" class="WndevDeveloper\Commands\PluginlistStatusCommand">
+            <tag name="console.command" />
+        </service>
+        <service id="wndev_developer.commands.pluginlist_update" class="WndevDeveloper\Commands\PluginlistUpdateCommand">
+            <tag name="console.command" />
+        </service>
+        <service id="wndev_developer.commands.warm_http_cache" class="WndevDeveloper\Commands\WarmHttpCacheCommand">
+            <tag name="console.command" />
+        </service>
+        <service id="wndev_developer.commands.plugin_documentation" class="WndevDeveloper\Commands\PluginDocumentation">
+            <tag name="console.command" />
+        </service>
+        <service id="wndev_developer.commands.deleteur_subshop" class="WndevDeveloper\Commands\DeleteurSubshop">
+            <tag name="console.command" />
+        </service>
+    </services>
+</container>
