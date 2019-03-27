@@ -79,7 +79,7 @@ class Shopware_Controllers_Frontend_WndevPdfOutput extends Enlight_Controller_Ac
                 'debug' => true,
                 'allow_output_buffering' => true
             ];
-            $mpdf                   = new Mpdf\Mpdf($pdfConfig);
+            $mpdf                   = new mPDF($pdfConfig);
             $mpdf->allow_charset_conversion = true;  // Set by default to TRUE
             $mpdf->charset_in       = 'utf-8';
             $mpdf->mirrorMargins    = 0;
